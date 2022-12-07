@@ -1,50 +1,68 @@
 package org.example.operators;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class Operators {
     public static void main(String[] args) {
-        double firstNum, secondNum;
+        Set<Character> supportedOperators = Set.of('+', '-', '*', '/', '^');
+        double firstNumber, secondNumber;
         double result = 0;
 
-        Scanner scanObj = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         while (result != 'q') {
             System.out.println("Введите первое число:");
-            firstNum = scanObj.nextDouble();
+            try {
+                scanner = new Scanner(System.in);
+                firstNumber = scanner.nextDouble();
+            } catch (Exception e) {
+                System.out.println("Некорректный ввод, попробуйте еще раз");
+                continue;
+            }
 
             System.out.println("Введите оператор:");
-            char operator = scanObj.next().charAt(0);
+            char operator = scanner.next().charAt(0);
+            if (!supportedOperators.contains(operator)) {
+                System.out.println("Оператор " + operator + " не поддерживается");
+                continue;
+            }
 
             System.out.println("Введите второе число:");
-            secondNum = scanObj.nextDouble();
+            try {
+                scanner = new Scanner(System.in);
+                secondNumber = scanner.nextDouble();
+            } catch (Exception e) {
+                System.out.println("Некорректный ввод, попробуйте еще раз");
+                continue;
+            }
 
             switch (operator) {
                 case '+':
-                    result = firstNum + secondNum;
+                    result = firstNumber + secondNumber;
                     break;
 
                 case '-':
-                    result = firstNum - secondNum;
+                    result = firstNumber - secondNumber;
                     break;
 
                 case '*':
-                    result = firstNum * secondNum;
+                    result = firstNumber * secondNumber;
                     break;
 
                 case '/':
-                    result = firstNum / secondNum;
+                    result = firstNumber / secondNumber;
                     break;
 
                 case '^':
-                    result = Math.pow(firstNum, secondNum);
+                    result = Math.pow(firstNumber, secondNumber);
                     break;
 
                 default:
                     System.out.println("Введите ещё раз!");
                     continue;
             }
-            System.out.println(firstNum + " " + operator + " " + secondNum + " = " + result);
+            System.out.println(firstNumber + " " + operator + " " + secondNumber + " = " + result);
         }
     }
 }
