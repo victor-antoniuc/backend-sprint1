@@ -14,12 +14,12 @@ public class StringUsage {
         return string.toLowerCase();
     }
 
-    private static int lengthString(String string) {
+    private static int getLengthString(String string) {
         System.out.println("Line length = " + string.length());
         return 0;
     }
 
-    private static int vowelsAndConsonants(String string) {
+    private static int getVowelsAndConsonants(String string) {
         int vowels = 0, сonsonants = 0;
 
         String ref = "aeiouAEIOU";
@@ -39,37 +39,30 @@ public class StringUsage {
         return vowels;
     }
 
-    private static int numberOfWords(String string) {
+    private static int getNumberOfWords(String string) {
         System.out.println("Number of Words = " + string.split("\\s").length);
         return 0;
     }
 
-    private static String duplicate(String string) {
+    private static String getDuplicateWords(String string) {
         String[] words = string.split("\\W");
         System.out.println("Dublicate:");
 
-        Map<String, Integer> word_map = new HashMap<>();
+        Map<String, Integer> wordCountMap = new HashMap<>();
 
         for (String word : words) {
-            if (word_map.get(word) != null) {
-                word_map.put(word, word_map.get(word) + 1);
-            }
-            else {
-                word_map.put(word, 1);
-            }
+            wordCountMap.merge(word, 1, Integer::sum);
         }
 
-        Set<String> word_set = word_map.keySet();
-
-        for (String word : word_set) {
-            if (word_map.get(word) > 1) {
+        wordCountMap.forEach((word, count) -> {
+            if (count > 1) {
                 System.out.println(word);
             }
-        }
+        });
         return string;
     }
 
-    private static String largestAndSmallestWord (String string) {
+    private static String getlargestAndSmallestWord (String string) {
         String[] words = string.split("\\s");
         String small = "", large="";
         small = large = words[0];
@@ -97,11 +90,11 @@ public class StringUsage {
             FileWriter myWriter = new FileWriter("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/output.txt");
             myWriter.write(uppercase(inputStr));
             myWriter.write(lowercase(inputStr));
-            myWriter.write(lengthString(inputStr));
-            myWriter.write(vowelsAndConsonants(inputStr));
-            myWriter.write(numberOfWords(inputStr));
-            myWriter.write(duplicate(inputStr));
-            myWriter.write(largestAndSmallestWord(inputStr));
+            myWriter.write(getLengthString(inputStr));
+            myWriter.write(getVowelsAndConsonants(inputStr));
+            myWriter.write(getNumberOfWords(inputStr));
+            myWriter.write(getDuplicateWords(inputStr));
+            myWriter.write(getlargestAndSmallestWord(inputStr));
             myWriter.close();
         } catch (IOException e) {
             System.out.println("An error occurred.");
