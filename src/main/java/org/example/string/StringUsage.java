@@ -20,7 +20,7 @@ public class StringUsage {
     }
 
     private static int vowelsAndConsonants(String string) {
-        int vow = 0, con = 0;
+        int vowels = 0, сonsonants = 0;
 
         String ref = "aeiouAEIOU";
 
@@ -30,13 +30,13 @@ public class StringUsage {
                     || (string.charAt(i) >= 'a'
                     && string.charAt(i) <= 'z')) {
                 if (ref.indexOf(string.charAt(i)) != -1)
-                    vow++;
+                    vowels++;
                 else
-                    con++;
+                    сonsonants++;
             }
         }
-        System.out.println("Number of Vowels = " + vow + "\nNumber of Consonants = " + con);
-        return vow;
+        System.out.println("Number of Vowels = " + vowels + "\nNumber of Consonants = " + сonsonants);
+        return vowels;
     }
 
     private static int numberOfWords(String string) {
@@ -74,13 +74,13 @@ public class StringUsage {
         String small = "", large="";
         small = large = words[0];
 
-        for (int i=0; i<words.length; i++) {
-            if (small.length() > words[i].length()) {
-                small = words[i];
+        for (String word : words) {
+            if (small.length() > word.length()) {
+                small = word;
             }
 
-            if (large.length() < words[i].length()) {
-                large = words[i];
+            if (large.length() < word.length()) {
+                large = word;
             }
         }
         System.out.println("Smallest word: " + small);
