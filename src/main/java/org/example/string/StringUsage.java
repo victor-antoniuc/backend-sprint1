@@ -91,17 +91,17 @@ public class StringUsage {
     public static void main(String[] args) throws IOException {
         Path input = Path.of("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/input.txt");
         String inputStr = Files.readString(input);
-        System.out.println(input_str);
+        System.out.println(inputStr);
 
         try {
             FileWriter myWriter = new FileWriter("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/output.txt");
-            myWriter.write(uppercase(input_str));
-            myWriter.write(lowercase(input_str));
-            myWriter.write(lengthString(input_str));
-            myWriter.write(vowelsAndConsonants(input_str));
-            myWriter.write(numberOfWords(input_str));
-            myWriter.write(duplicate(input_str));
-            myWriter.write(largestAndSmallestWord(input_str));
+            myWriter.write(uppercase(inputStr));
+            myWriter.write(lowercase(inputStr));
+            myWriter.write(lengthString(inputStr));
+            myWriter.write(vowelsAndConsonants(inputStr));
+            myWriter.write(numberOfWords(inputStr));
+            myWriter.write(duplicate(inputStr));
+            myWriter.write(largestAndSmallestWord(inputStr));
             myWriter.close();
         } catch (IOException e) {
             System.out.println("An error occurred.");
