@@ -108,8 +108,8 @@ public class StringUsage {
             e.printStackTrace();
         }
 
-        Path output_result = Path.of("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/output.txt");
-        String output_str = Files.readString(output_result);
+        Path output = Path.of("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/output.txt");
+        String output_str = Files.readString(output);
         System.out.println(output_str);
     }
 }
