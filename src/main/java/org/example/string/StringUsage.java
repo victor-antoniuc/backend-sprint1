@@ -90,7 +90,7 @@ public class StringUsage {
 
     public static void main(String[] args) throws IOException {
         Path input = Path.of("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/input.txt");
-        String input_str = Files.readString(input);
+        String inputStr = Files.readString(input);
         System.out.println(input_str);
 
         try {
@@ -109,7 +109,7 @@ public class StringUsage {
         }
 
         Path output = Path.of("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/output.txt");
-        String output_str = Files.readString(output);
-        System.out.println(output_str);
+        String outputStr = Files.readString(output);
+        System.out.println(outputStr);
     }
 }
