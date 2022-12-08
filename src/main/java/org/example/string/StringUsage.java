@@ -2,7 +2,6 @@ package org.example.string;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -93,8 +92,6 @@ public class StringUsage {
         Path input = Path.of("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/input.txt");
         String input_str = Files.readString(input);
         System.out.println(input_str);
-
-        File output = new File("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/output.txt");
 
         try {
             FileWriter myWriter = new FileWriter("/home/libre_alex/projects/internship/backend-sprint1-fix/src/main/resources/output.txt");
