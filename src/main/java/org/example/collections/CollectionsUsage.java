@@ -1,10 +1,10 @@
 package org.example.collections;
 
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.MessageFormat;
 import java.time.LocalDate;
@@ -63,8 +63,17 @@ public class CollectionsUsage {
         System.out.println("----------------");
         extractFromArrayListOfEmployeesWithHashSet(namesList);
         System.out.println("----------------");
-        for (String i : result) {
-            System.out.println(i);
+
+        try {
+            FileWriter myWriter = new FileWriter("./src/main/resources/employee-final.txt");
+            for (String i : result) {
+                myWriter.write(i);
+                System.out.println(i);
+            }
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 }
