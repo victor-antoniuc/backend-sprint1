@@ -6,7 +6,12 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.MessageFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CollectionsUsage {
     private static void extractFromArrayListOfEmployeesWithContains (List<String> names) {
@@ -36,13 +41,30 @@ public class CollectionsUsage {
     public static void main(String[] args) throws IOException, URISyntaxException {
         List<String> names = Files.readAllLines(Paths.get(CollectionsUsage.class.getResource("/employee-input.txt").toURI()));
         names.sort(String::compareTo);
-        System.out.println(names);
-        List<Employee> employees = names.stream().map(s -> {
-            String[] firstAndLastName = s.split(" ");
-            return new Employee(firstAndLastName[0], firstAndLastName[1]);
-        }).toList();
 
-        extractFromArrayListOfEmployeesWithContains(names);
-        extractFromArrayListOfEmployeesWithHashSet(names);
+        ArrayList<String> namesList = new ArrayList<>();
+        for (String name : names) {
+            namesList.add(name.replace("|", " "));
+        }
+
+        List<String> result = namesList.stream().map(employee -> {
+            LocalDate birthDate = LocalDate.ofEpochDay((long) (Math.random() * LocalDate.now().toEpochDay()));
+
+            return MessageFormat.format(
+                    "{0}|{1}|{2}",
+                    employee,
+                    birthDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                    Period.between(birthDate, LocalDate.now()).getYears()
+            );
+        }).collect(Collectors.toList());
+
+
+        extractFromArrayListOfEmployeesWithContains(namesList);
+        System.out.println("----------------");
+        extractFromArrayListOfEmployeesWithHashSet(namesList);
+        System.out.println("----------------");
+        for (String i : result) {
+            System.out.println(i);
+        }
     }
 }
