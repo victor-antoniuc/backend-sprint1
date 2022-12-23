@@ -16,8 +16,7 @@ public class Products {
 
         while(i.hasNext()) {
             Map.Entry entry = (Map.Entry)i.next();
-            System.out.print(entry.getKey() + ": ");
-            System.out.println(entry.getValue());
+            System.out.print(entry.getKey() + ": " + entry.getValue());
         }
     }
 
@@ -27,21 +26,21 @@ public class Products {
         LinkedHashMap<String, String> codToProductMap = new LinkedHashMap<>();
 
         for (String product : products) {
-            String[] productElements = product.replace("|", " ").split("\\s");
+            String[] productElements = product.split("\\|");
 
             codToProductMap.put(productElements[0], productElements[1]);
         }
 
         display(codToProductMap);
-        System.out.println("-----------------");
+        System.out.println("");
 
         List<String> listKeys = new ArrayList<>(codToProductMap.keySet());
-        String lastEntry = null;
+        String lastAddedKey = null;
         if(listKeys.size() > 0 ) {
-            lastEntry = listKeys.get( listKeys.size() - 1 );
+            lastAddedKey = listKeys.get( listKeys.size() - 1 );
         }
 
-        codToProductMap.put(lastEntry, "Pepsi-Cola");
+        codToProductMap.put(lastAddedKey, "Pepsi-Cola");
         display(codToProductMap);
 
         try {
