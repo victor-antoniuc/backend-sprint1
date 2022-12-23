@@ -1,0 +1,4 @@
+1|Bread
+2|Salt
+3|Coca-Cola
+4|Sugar
