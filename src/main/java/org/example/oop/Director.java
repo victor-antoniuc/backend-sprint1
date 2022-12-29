@@ -1,7 +1,14 @@
 package org.example.oop;
 
 public class Director extends Employee {
-    public Director(String personalCode, String firstLastName, String positionCode, int salary) {
+    private final String companyName;
+
+    public Director(Integer personalCode, String firstLastName, Integer positionCode, String companyName, Integer salary) {
         super(personalCode, firstLastName, positionCode, salary);
+        this.companyName = companyName;
+    }
+
+    public String getCompanyName() {
+        return companyName;
     }
 }
