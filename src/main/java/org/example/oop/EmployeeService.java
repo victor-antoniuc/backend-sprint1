@@ -56,16 +56,17 @@ public class EmployeeService {
 
     private static void getTheTotalAmountOfMoneyAndPercent (List<Employee> employeeList, int personalCode) {
         double totalSum = 0;
-        double percentage = 0;
 
         for (Employee employee : employeeList) {
             totalSum += employee.getSalary();
         }
 
-        percentage = (employeeList.get(personalCode).getSalary() / totalSum) * 100;
+        for (Employee employee : employeeList) {
+            double percentage = (employee.getSalary() / totalSum) * 100;
+            System.out.println(percentage);
+        }
 
         System.out.println(totalSum);
-        System.out.println(percentage);
     }
 
     public static void main(String[] args) throws URISyntaxException, IOException {
