@@ -1,3 +1,4 @@
 1|Ivan Petrov|1|PetrovCompany|1000000
 2|Vasilii Sidorov|2|50|10000
 3|Mihail Ceban|3|Rust|5000
+4|Alexei Antonov|3|JavaScript|4500
