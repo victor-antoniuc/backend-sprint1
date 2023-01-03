@@ -54,7 +54,7 @@ public class EmployeeService {
         return employees;
     }
 
-    private static void getTheTotalAmountOfMoneyAndPercent (List<Employee> employeeList, int personalCode) {
+    private static void getTheTotalAmountOfMoneyAndPercent (List<Employee> employeeList) {
         double totalSum = 0;
 
         for (Employee employee : employeeList) {
@@ -76,7 +76,7 @@ public class EmployeeService {
 
         changeEmployeesSalary(employeeList, 3, 8000);
 
-        getTheTotalAmountOfMoneyAndPercent(employeeList, 0);
+        getTheTotalAmountOfMoneyAndPercent(employeeList);
 
         Scanner scanner = new Scanner(System.in);
 
